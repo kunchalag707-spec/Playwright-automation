@@ -1,0 +1,2 @@
+2026-09-28 17:56:20,190 | INFO | conftest | Starting test: test_login_with_valid_credentials[chromium]
+2026-09-28 17:56:27,731 | INFO | conftest | Finished test: test_login_with_valid_credentials[chromium]
