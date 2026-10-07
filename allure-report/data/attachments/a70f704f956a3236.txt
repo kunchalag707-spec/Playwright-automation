@@ -1,2 +1,0 @@
-2026-10-05 17:22:13,904 | INFO | conftest | Starting test: test_login_with_valid_credentials
-2026-10-05 17:22:26,265 | INFO | conftest | Finished test: test_login_with_valid_credentials
