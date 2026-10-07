@@ -12,6 +12,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      APP_USERNAME: ${{ secrets.APP_USERNAME }}
+      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      TIMEOUT_MS: ${{ secrets.TIMEOUT_MS }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,9 +37,11 @@ jobs:
         run: |
           playwright install --with-deps
 
-      - name: Run Pytest
-        env:
-          TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
-          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+
+      - name: Verify environment variables
         run: |
-         pytest
+          python -c "import os; print('BASE_URL:', os.getenv('BASE_URL')); print('APP_USERNAME SET:', bool(os.getenv('APP_USERNAME'))); print('APP_PASSWORD SET:', bool(os.getenv('APP_PASSWORD'))); print('API_BASE_URL SET:', bool(os.getenv('API_BASE_URL'))); print('TIMEOUT_MS:', os.getenv('TIMEOUT_MS'))"
+
+      - name: Run tests
+        run: |
+         pytest --alluredir=allure-results
