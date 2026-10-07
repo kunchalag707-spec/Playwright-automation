@@ -1,2 +1,0 @@
-[32mINFO    [0m conftest:conftest.py:22 Starting test: test_login_with_valid_credentials[chromium]
-[32mINFO    [0m conftest:conftest.py:24 Finished test: test_login_with_valid_credentials[chromium]

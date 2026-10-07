@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"C:\Users\GK\Playwright Automation\features\login.feature: Login with valid credentials","10692","test_login_with_valid_credentials","tests.step_defs","Wed Oct 07 10:33:25 IST 2026","passed","Wed Oct 07 10:33:36 IST 2026","","test_login_steps","",""

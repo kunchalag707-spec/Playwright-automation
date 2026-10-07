@@ -13,14 +13,18 @@ class LoginPage:
 
     def goto(self, base_url: str) -> None:
         self.page.goto(f"{base_url}/signin")
-        time.sleep(5)
+        
 
     def login(self, email: str, password: str) -> None:
         self.email_input.fill(email)
         self.password_input.fill(password)
         self.submit_button.click()
 
-    
-        self.page.wait_for_timeout(3000)
+
+
         
+        
+
+    
+    
     

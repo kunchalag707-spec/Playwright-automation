@@ -3,7 +3,9 @@ __pycache__/
 .pytest_cache/
 .playwright/
 allure-results/
+allure-report/
 playwright-report/
 .env
+.env.example
 report.html
 *.pyc
