@@ -13,12 +13,17 @@ class LoginPage:
 
     def goto(self, base_url: str) -> None:
         self.page.goto(f"{base_url}/signin")
+        self.page.locator("app-splash").wait_for(
+        state="hidden",
+        timeout=30000
+    )
         
 
     def login(self, email: str, password: str) -> None:
         self.email_input.fill(email)
         self.password_input.fill(password)
         self.submit_button.click()
+
 
 
 
