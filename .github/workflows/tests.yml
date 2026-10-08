@@ -61,6 +61,17 @@ jobs:
         run: |
           allure generate allure-results -o allure-report --clean
 
+      - name: Upload Allure report to GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+         path: allure-report
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4    
+
 
       - name: Upload Allure results
         if: always()
