@@ -12,4 +12,5 @@ class Config:
     username: str = os.getenv("APP_USERNAME", "")
     password: str = os.getenv("APP_PASSWORD", "")
     api_base_url: str = os.getenv("API_BASE_URL", "")
-    timeout_ms: int = int(os.getenv("TIMEOUT_MS", "30000"))
+    timeout_ms: int = int(os.getenv("TIMEOUT_MS")or "30000")
+    
