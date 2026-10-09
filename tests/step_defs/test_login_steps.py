@@ -26,7 +26,7 @@ def verify_trips_page(page):
 
     expect(page).to_have_url(
         "https://avplat-local.web.app/trips",
-        timeout=10000
+        timeout=9000
     )
 
 
