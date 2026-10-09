@@ -21,7 +21,7 @@ def login_with_valid_credentials(page, config):
 
 @then("I should be redirected to the trips page")
 def verify_trips_page(page):
-    expect(page).to_have_url("https://avplat-local.web.app/trips",timeout=10000)
+    expect(page).to_have_url("https://avplat-local.web.app/trips",timeout=8000)
 
 
 
