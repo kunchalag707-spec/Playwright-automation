@@ -13,4 +13,5 @@ class Config:
     password: str = os.getenv("APP_PASSWORD", "")
     api_base_url: str = os.getenv("API_BASE_URL", "")
     timeout_ms: int = int(os.getenv("TIMEOUT_MS")or "30000")
+    firebase_api_key: str = os.getenv("FIREBASE_API_KEY", "")
     

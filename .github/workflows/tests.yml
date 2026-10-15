@@ -25,6 +25,7 @@ jobs:
       BASE_URL: ${{ secrets.BASE_URL }}
       APP_USERNAME: ${{ secrets.APP_USERNAME }}
       APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
       TIMEOUT_MS: ${{ secrets.TIMEOUT_MS }}
 
@@ -61,14 +62,19 @@ jobs:
         run: |
           python -c "import os; print('BASE_URL:', os.getenv('BASE_URL')); print('APP_USERNAME SET:', bool(os.getenv('APP_USERNAME'))); print('APP_PASSWORD SET:', bool(os.getenv('APP_PASSWORD'))); print('API_BASE_URL SET:', bool(os.getenv('API_BASE_URL'))); print('TIMEOUT_MS:', os.getenv('TIMEOUT_MS'))"
 
-      - name: Run tests
+      - name: Run UI and API tests
         run: |
-         pytest --alluredir=allure-results
+          python -m pytest --alluredir=allure-results --clean-alluredir
 
       - name: Generate Allure report
-        if: always()
+        if: ${{ always() }}
         run: |
-          allure generate allure-results -o allure-report --clean
+          if [ -d allure-results ] && [ -n "$(find allure-results -name '*-result.json' -print -quit)" ]; then
+            allure generate allure-results --clean -o allure-report
+          else
+            mkdir -p allure-report
+            echo '<html><body><h1>No Allure test results found</h1></body></html>' > allure-report/index.html
+            echo "No Allure result files were generated."
 
       - name: Upload Allure report to GitHub Pages
         if: always()

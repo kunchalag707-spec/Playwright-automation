@@ -32,3 +32,20 @@ def authenticated_page(page: Page, config: Config) -> Page:
     page.get_by_label("Password").fill(config.password)
     page.get_by_role("button", name="Log in").click()
     return page
+
+
+import pytest
+
+from api.api_client import ApiClient
+from utils.config import Config
+
+@pytest.fixture
+def api_client():
+    config = Config()
+    config.api_base_url = "https://jsonplaceholder.typicode.com"
+
+    client = ApiClient(config)
+
+    yield client
+
+    client.session.close()
