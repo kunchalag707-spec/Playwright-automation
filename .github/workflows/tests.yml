@@ -75,6 +75,7 @@ jobs:
             mkdir -p allure-report
             echo '<html><body><h1>No Allure test results found</h1></body></html>' > allure-report/index.html
             echo "No Allure result files were generated."
+          fi
 
       - name: Upload Allure report to GitHub Pages
         if: always()
