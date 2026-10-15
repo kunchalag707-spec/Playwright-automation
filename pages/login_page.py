@@ -1,5 +1,5 @@
 import time
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, Page, TimeoutError as PlaywrightTimeoutError
 
 
 
